@@ -1,7 +1,7 @@
 # ApiWorkEntry
 ## Instalacion 🔧: 
-* [Npm](https://www.npmjs.com/) - Para el gestor de paquetes
-* [NodeJs](https://nodejs.org/en/) - Para el back
+* [Symfony](https://symfony.com/) - El framework.
+* [Composer](https://getcomposer.org/) - Para el gestor de paquetes
 * [mySql](https://www.mamp.info/en/windows/) - Base de datos(yo he utilizado mamp)
 
 ## Configuracion ⚙️
