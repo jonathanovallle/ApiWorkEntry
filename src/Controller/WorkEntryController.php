@@ -67,7 +67,9 @@ class WorkEntryController extends AbstractController
     {
         $workEntry = $this->workEntryRepository->findOneBy(['id' => $id]);
         $workEntry->setDeletedAt(new \DateTimeImmutable($request->get('time')));
-
+        if(empty($workEntry)){
+            throw new NotFoundHttpException('id no existe');
+        }
         $updatedWorkEntry = $this->workEntryRepository->updateWorkEntry($workEntry);
 
 	    return new JsonResponse(['status' => 'workEntry deleted!'], Response::HTTP_OK);
@@ -79,6 +81,9 @@ class WorkEntryController extends AbstractController
     public function update($id, Request $request): JsonResponse
     {
         $workEntry = $this->workEntryRepository->findOneBy(['id' => $id]);
+        if(empty($workEntry)){
+            throw new NotFoundHttpException('id no existe');
+        }
         $workEntry->setEndDate(new \DateTimeImmutable($request->get('time')));
         $updatedWorkEntry = $this->workEntryRepository->updateWorkEntry($workEntry);
 

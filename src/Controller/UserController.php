@@ -63,6 +63,9 @@ class UserController extends AbstractController
     public function update($id, Request $request): JsonResponse
     {
         $user = $this->userRepository->findOneBy(['id' => $id]);
+        if(empty($user)){
+            throw new NotFoundHttpException('id no existe');
+        }
         $data = json_decode($request->getContent(), true);
 
         empty($data['name']) ? true : $user->setName($data['name']);
@@ -80,6 +83,9 @@ class UserController extends AbstractController
     public function delete($id, Request $request): JsonResponse
     {
         $user = $this->userRepository->findOneBy(['id' => $id]);
+        if(empty($user)){
+            throw new NotFoundHttpException('id no existe');
+        }
         $user->setDeletedAt(new \DateTimeImmutable($request->get('time')));
 
         $updatedUser = $this->userRepository->updateUser($user);
